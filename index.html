@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <base href="/">
+  <meta content="IE=Edge" http-equiv="X-UA-Compatible">
+  <meta name="description" content="SooqPro - The fastest way to sell anything in Oman">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  
+  <!-- iOS meta tags & icons -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="SooqPro">
+  <link rel="apple-touch-icon" href="icons/icon.svg">
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="icons/icon.svg"/>
+  
+  <!-- Title -->
+  <title>SooqPro - Sell Fast in Oman 🇴🇲</title>
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Arabic:wght@400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      font-family: 'Poppins', 'Noto Sans Arabic', sans-serif;
+      overflow: hidden;
+    }
+    #loading {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      z-index: 9999;
+      transition: opacity 0.5s ease;
+    }
+    #loading h1 {
+      font-size: 3rem;
+      margin: 0;
+      font-weight: 700;
+      text-shadow: 0 2px 10px rgba(0,0,0,0.2);
+    }
+    #loading p {
+      font-size: 1.1rem;
+      opacity: 0.9;
+      margin-top: 0.5rem;
+    }
+    .spinner {
+      width: 60px;
+      height: 60px;
+      border: 4px solid rgba(255,255,255,0.3);
+      border-top-color: white;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+      margin: 24px auto;
+    }
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+    .fade-out {
+      opacity: 0;
+      pointer-events: none;
+    }
+  </style>
+</head>
+<body>
+  <div id="loading">
+    <h1>🛒 SooqPro</h1>
+    <div class="spinner"></div>
+    <p>The fastest way to sell in Oman 🇴🇲</p>
+  </div>
+  
+  <script>
+    window.addEventListener('load', function() {
+      // Flutter web app initialization
+      if (window._flutter) {
+        window._flutter.loader.loadEntrypoint({
+          serviceWorker: {
+            serviceWorkerVersion: null,
+          },
+          onEntrypointLoaded: async function(engineInitializer) {
+            const appRunner = await engineInitializer.initializeEngine();
+            await appRunner.runApp();
+            
+            // Hide loading screen after app loads
+            setTimeout(function() {
+              var loading = document.getElementById('loading');
+              if (loading) {
+                loading.classList.add('fade-out');
+                setTimeout(function() {
+                  loading.style.display = 'none';
+                }, 500);
+              }
+            }, 1000);
+          }
+        });
+      }
+    });
+  </script>
+  
+  <script src="flutter.js" defer></script>
+</body>
+</html>
